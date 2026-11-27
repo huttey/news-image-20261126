@@ -7,6 +7,13 @@ The output is deterministic: two runs write identical bytes.
 """
 
 import os
+import sys
+
+# The grader runs `python3 -P -s /bot/main.py`: -P keeps the script's
+# directory off sys.path, so a sibling `import draw` fails there even
+# though it works in a plain run. Point sys.path at this file's own
+# directory first so the sibling import resolves in both cases.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import draw
 
